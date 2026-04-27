@@ -76,7 +76,7 @@ const SERVICE_CFG = {
   tagline: "Price feeds, TWAPs, and oracle service for autonomous agent settlement.",
   description: "MCP server for HiveOracle \u2014 price feeds, TWAPs, and oracle service on the Hive Civilization. Aggregated multi-source feeds for autonomous agent trading and settlement. USDC settlement on Base L2. Real rails, no mocks.",
   keywords: ["mcp", "model-context-protocol", "x402", "agentic", "ai-agent", "ai-agents", "llm", "hive", "hive-civilization", "oracle", "price-oracles", "price-feeds", "twap", "oracle-service", "usdc", "base", "base-l2", "agent-economy", "a2a"],
-  externalUrl: "https://hive-mcp-gateway.onrender.com/oracle",
+  externalUrl: "https://hive-mcp-oracle.onrender.com",
   gatewayMount: "/oracle",
   version: "1.0.1",
   pricing: [
