@@ -1,0 +1,103 @@
+        # Smithery Registry — HiveOracle MCP Server
+        # https://smithery.ai
+        # Backend status: v0.1 — pending hivemorph backend build (Q3 2026 spec)
+
+        startCommand:
+          type: http
+          configSchema:
+            type: object
+            properties: {}
+            required: []
+          url: https://hivemorph.onrender.com/mcp/hive-mcp-oracle
+
+        name: hive-mcp-oracle
+        displayName: HiveOracle — Agent-callable oracle aggregator for signed price feeds and off-chain data with x402 subscriptions
+        version: "1.0.0"
+        description: >
+          MCP server for the Hive Oracle aggregator. Agents browse the full catalog of available price feeds and off-chain data sources, fetch cryptographically signed price quotes for any symbol, subscribe to threshold-triggered notifications with USDC settlement via x402, and verify oracle signatures for auditability. Designed for use in smart-contract triggers, parametric insurance, and A2A credit systems. Backend build is Q3 2026. Tool calls currently return HTTP 503 with a feature-gating response — no mock data is ever returned. Submit interest via hive-mcp-connector.
+
+        author:
+          name: Steve Rotzin
+          email: steve@thehiveryiq.com
+          url: https://www.thehiveryiq.com
+
+        license: MIT
+        homepage: https://github.com/srotzin/hive-mcp-oracle
+        repository:
+          type: git
+          url: https://github.com/srotzin/hive-mcp-oracle
+
+        transport: streamable-http
+        endpoint: https://hivemorph.onrender.com/mcp
+        protocol: "2024-11-05"
+
+        categories:
+          - oracle
+  - data
+  - agent-to-agent
+  - web3
+  - defi
+  - price-feeds
+
+        tags:
+          - mcp
+  - hive
+  - oracle
+  - price-feed
+  - usdc
+  - base-l2
+  - a2a
+  - signed-data
+  - x402
+  - ai-agents
+
+        tools:
+        - name: list_feeds
+  description: >
+    List all available oracle data feeds: price feeds, off-chain event feeds, and index feeds. Returns catalog with symbol, description, update frequency, and data source. Backend pending (Q3 2026).
+  inputs:
+    []
+      - name: get_price
+        description: >
+          Fetch a cryptographically signed price quote for a given symbol. Response includes price, timestamp, and oracle signature for on-chain verification. Backend pending (Q3 2026).
+        inputs:
+          - name: symbol
+type: string
+required: true
+description: "Feed symbol (e.g. BTC-USD, ETH-USD, SOL-USD, custom index)"
+        - name: subscribe
+          description: >
+            Subscribe to threshold-triggered oracle notifications for a symbol. USDC settlement via x402 on Base, Ethereum, or Solana. Returns subscription_id. Backend pending (Q3 2026).
+          inputs:
+            - name: symbol
+  type: string
+  required: true
+  description: "Feed symbol to subscribe to"
+- name: threshold
+  type: number
+  required: true
+  description: "Price threshold that triggers a notification callback"
+        - name: verify_signature
+          description: >
+            Verify the cryptographic signature on an oracle quote. Returns boolean. Used by smart contracts and agent workflows to confirm data provenance. Backend pending (Q3 2026).
+          inputs:
+            - name: quote
+  type: string
+  required: true
+  description: "JSON-serialized oracle quote object"
+- name: sig
+  type: string
+  required: true
+  description: "Oracle signature (hex-encoded)"
+
+        runtime:
+          type: node
+          version: ">=18"
+          command: node server.js
+          env:
+            - name: PORT
+              default: "3000"
+              required: false
+            - name: HIVE_BASE
+              default: "https://hivemorph.onrender.com"
+              required: false

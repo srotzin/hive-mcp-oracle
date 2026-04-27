@@ -1,0 +1,39 @@
+{
+  "name": "hive-mcp-oracle",
+  "version": "1.0.0",
+  "description": "MCP server for the Hive Oracle aggregator. Agents browse the full catalog of available price feeds and off-chain data sources, fetch cryptographically signed price quotes for any symbol, subscribe to ",
+  "type": "module",
+  "main": "server.js",
+  "bin": {
+    "hive-mcp-oracle": "./server.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "mcp",
+    "hive",
+    "oracle",
+    "price-feed",
+    "usdc",
+    "base-l2",
+    "a2a",
+    "signed-data",
+    "x402",
+    "ai-agents"
+  ],
+  "author": "Steve Rotzin <steve@thehiveryiq.com> (https://www.thehiveryiq.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/srotzin/hive-mcp-oracle",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srotzin/hive-mcp-oracle"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
